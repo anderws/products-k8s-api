@@ -1,0 +1,25 @@
+version: '3.3'
+services:
+  products-api:
+    image: anderws10/product-k8s-api:v1.0.0
+    ports:
+      - '8080:8080'
+
+  mongo:
+    ports:
+      - '27017:27017'
+    container_name: docker-mongo
+    restart: always
+    logging:
+      options:
+        max-size: 1g
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=mongoadmin
+      - MONGO_INITDB_ROOT_PASSWORD=mongopwd
+    image: mongo
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

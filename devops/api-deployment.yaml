@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-deployment
+spec:
+  selector:
+    matchLabels:
+      app: api
+  template:
+    metadata:
+      labels:
+        app: api
+    spec:
+      containers:
+      - name: api
+        image: anderws10/product-k8s-api:v1.0.0
+        ports:
+        - containerPort: 8080
+        env:
+          - name: MONGODB_USER
+            value: mongoadmin
+          - name: MONGODB_PWD
+            value: mongopwd
+          - name: MONGODB_URL
+            value: "mongo-service"

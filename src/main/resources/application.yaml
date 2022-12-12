@@ -1,0 +1,6 @@
+server:
+  port: 8080
+spring:
+  data:
+    mongodb:
+      uri: mongodb://${MONGODB_USER}:${MONGODB_PWD}@${MONGODB_URL}:27017/products?authSource=admin
