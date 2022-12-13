@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: api
-        image: anderws10/product-k8s-api:v1.0.0
+        image: anderws10/product-k8s-api:latest
         ports:
         - containerPort: 8080
         env:
