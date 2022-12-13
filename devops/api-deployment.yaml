@@ -16,10 +16,17 @@ spec:
         image: anderws10/product-k8s-api:latest
         ports:
         - containerPort: 8080
+        envFrom:
+          - configMapRef:
+              name: api-configmap
         env:
           - name: MONGODB_USER
-            value: mongoadmin
+            valueFrom:
+              secretKeyRef:
+                key: MONGO_INITDB_ROOT_USERNAME
+                name: mongodb-secret
           - name: MONGODB_PWD
-            value: mongopwd
-          - name: MONGODB_URL
-            value: "mongo-service"
+            valueFrom:
+              secretKeyRef:
+                key: MONGO_INITDB_ROOT_PASSWORD
+                name: mongodb-secret
